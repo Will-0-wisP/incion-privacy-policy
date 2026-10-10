@@ -1,249 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy - Incion</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy – Incion</title>
+  <meta name="description" content="How the Incion app collects, uses and protects your data, and how to delete your account and data.">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="logo.png">
 
   <style>
+    :root {
+      --bg: #ffffff; --bg-subtle: #f6f8fa; --ink: #1f2328; --muted: #59636e; --line: #d1d9e0;
+      --accent: #0969da; --danger: #cf222e; --danger-bg: #fff5f5;
+      --note-bg: #ddf4ff; --note-line: #54aeff; --header-bg: rgba(255,255,255,.92);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117; --bg-subtle: #151b23; --ink: #e6edf3; --muted: #9198a1; --line: #30363d;
+        --accent: #4493f8; --danger: #ff7b72; --danger-bg: #2a1517;
+        --note-bg: #10243a; --note-line: #388bfd; --header-bg: rgba(13,17,23,.92);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.7;
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+    code {
+      font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: var(--bg-subtle); border: 1px solid var(--line); border-radius: 5px; padding: .1em .4em;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 20; }
+    .skip:focus { left: 8px; }
 
-    .card {
-      background: #111827;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
+    /* Header */
+    .site { position: sticky; top: 0; z-index: 10; background: var(--header-bg); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .bar { max-width: 1080px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+    .logo:hover { text-decoration: none; }
+    .logo img { width: 28px; height: 28px; border-radius: 6px; object-fit: cover; display: block; background: var(--bg-subtle); }
+    .bar nav a { margin-left: 20px; font-size: .92rem; color: var(--muted); }
+    .bar nav a:hover { color: var(--ink); text-decoration: none; }
+    .bar nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    /* Layout */
+    .layout { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 56px; }
+    aside.side { position: sticky; top: 56px; align-self: start; max-height: calc(100vh - 56px); overflow-y: auto; padding: 36px 0; }
+    .side h2 { font-size: .8rem; font-weight: 600; color: var(--muted); margin: 0 0 10px; }
+    .side ol { list-style: none; counter-reset: n; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+    .side li { counter-increment: n; margin: 0; }
+    .side a { display: block; padding: 4px 0 4px 14px; margin-left: -1px; border-left: 1px solid transparent; font-size: .88rem; color: var(--muted); line-height: 1.45; }
+    .side a::before { content: counter(n) ". "; }
+    .side a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--accent); }
+    main { min-width: 0; padding: 44px 0 72px; max-width: 760px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      aside.side { position: static; max-height: none; padding: 24px 0 0; }
+      .side ol { columns: 2; }
     }
+    @media (max-width: 520px) { .side ol { columns: 1; } .bar nav a { margin-left: 14px; } }
 
-    .subtitle {
-      color: #94a3b8;
-      margin-bottom: 30px;
+    /* Content */
+    h1 { font-size: 2rem; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.02em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+    .chips li { font-size: .82rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
+    section { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+    section:first-of-type { margin-top: 28px; }
+    h2 { font-size: 1.4rem; line-height: 1.3; margin: 0 0 12px; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; margin: 22px 0 6px; }
+    p { margin: 0 0 14px; }
+    ul, ol { padding-left: 22px; margin: 0 0 14px; }
+    li { margin: 5px 0; }
+
+    .callout { border: 1px solid var(--line); border-left: 4px solid var(--note-line); background: var(--note-bg); border-radius: 6px; padding: 14px 18px; margin: 20px 0; }
+    .callout h2 { font-size: 1rem; margin: 0 0 6px; }
+    .callout ul { margin-bottom: 0; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 520px; }
+    th, td { text-align: left; padding: 10px 14px; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: var(--bg-subtle); font-weight: 600; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { font-weight: 600; }
+
+    /* Deletion */
+    .deletion { border: 1px solid var(--line); border-left: 4px solid var(--danger); background: var(--danger-bg); border-radius: 6px; padding: 22px 24px; }
+    .deletion > h2 { margin-top: 0; }
+    .steps { counter-reset: s; list-style: none; padding: 0; margin: 12px 0 18px; }
+    .steps li { counter-increment: s; position: relative; padding-left: 38px; margin: 12px 0; }
+    .steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%; background: var(--danger); color: #fff; font-size: .8rem; font-weight: 600; display: grid; place-items: center; }
+    .btn { display: inline-block; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: .94rem; color: #fff !important; background: #cf222e; border: 1px solid rgba(0,0,0,.15); }
+    .btn:hover { background: #a40e26; text-decoration: none; }
+    .small { color: var(--muted); font-size: .88rem; margin-top: 10px; }
+
+    footer { border-top: 1px solid var(--line); }
+    footer .in { max-width: 1080px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; color: var(--muted); font-size: .86rem; }
+    footer a { color: var(--muted); margin-right: 18px; }
+    footer a:hover { color: var(--ink); }
+
+    @media print {
+      .site, .side, .skip, .btn { display: none; }
+      .layout { display: block; } body { background: #fff; color: #000; }
     }
-
-    h2 {
-      margin-top: 30px;
-      color: #38bdf8;
-      font-size: 20px;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 6px 0;
-    }
-
-    .highlight {
-      color: #22c55e;
-      font-weight: 500;
-    }
-
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #64748b;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #1e293b;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-top: 10px;
-      color: #38bdf8;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Custom Deletion Callout Box */
-    .deletion-box {
-      border: 1px solid #334155;
-      background: #1e293b;
-      padding: 24px;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-
-    .btn-delete {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #ef4444;
-      color: #ffffff !important;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      margin: 15px 0;
-      transition: background-color 0.2s ease;
-    }
-
-    .btn-delete:hover {
-      background-color: #dc2626;
-      text-decoration: none;
-    }
-
-    .small-note {
-      color: #94a3b8;
-      font-size: 13px;
-      font-style: italic;
-    }
-
   </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <div class="container">
-    <div class="card">
-
-      <h1>Privacy Policy – Incion</h1>
-      <div class="subtitle">Last updated: April 2026</div>
-      <div class="badge">Secure • AdMob Ready • Firebase Integrated</div>
-
-      <p>
-        This Privacy Policy applies to the <span class="highlight">Incion</span> mobile application (“the App”).
-        The App allows users to create and manage text and audio notes securely.
-      </p>
-
-      <p>
-        By using the App, you agree to the collection and use of information in accordance with this policy.
-      </p>
-
-      <p><a href="terms.html">Terms & Conditions</a></p>
-
-      <h2>1. Information We Collect</h2>
-
-      <p><strong>a) Personal Information</strong></p>
-      <ul>
-        <li>Email address (via Firebase Authentication)</li>
-      </ul>
-
-      <p><strong>b) User Content</strong></p>
-      <ul>
-        <li>Text notes</li>
-        <li>Audio recordings</li>
-      </ul>
-
-      <p><strong>c) Device & Usage Data</strong></p>
-      <ul>
-        <li>Device type and OS</li>
-        <li>Usage behavior</li>
-        <li>IP address and advertising identifiers</li>
-      </ul>
-
-      <h2>2. How We Use Information</h2>
-      <ul>
-        <li>Provide and maintain app features</li>
-        <li>Enable login and syncing</li>
-        <li>Improve performance</li>
-        <li>Display ads</li>
-      </ul>
-
-      <h2>3. Third-Party Services</h2>
-      <ul>
-        <li>Google Firebase (authentication & storage)</li>
-        <li>Google AdMob (advertising)</li>
-      </ul>
-
-      <h2>4. Advertising</h2>
-      <p>
-        We use AdMob to serve ads. These may use cookies and device identifiers
-        to provide personalized and non-personalized ads.
-      </p>
-
-      <h2>5. Permissions</h2>
-      <ul>
-        <li>Microphone – record audio notes</li>
-        <li>Storage – save notes</li>
-        <li>Internet – app functionality and ads</li>
-      </ul>
-
-      <h2>6. Data Sharing</h2>
-      <p>
-        We do <span class="highlight">not sell</span> your data. Information is shared only with trusted services
-        like Firebase and AdMob.
-      </p>
-
-      <h2>7. Data Security</h2>
-      <p>
-        We use industry-standard measures to protect your data, but no system is 100% secure.
-      </p>
-
-      <h2>8. User Control & Data Deletion</h2>
-      <p>
-        Users can manage and delete notes inside the app at any time. If you wish to delete your entire account and purge all associated storage records permanently, you can also submit a request directly through the web interface below. You do not need to have the app currently installed to use this link.
-      </p>
-
-      <!-- Account Deletion Requirement Node for Google Play Console Verification -->
-      <div id="data-deletion-request" class="deletion-box">
-        <h3 style="margin-top: 0; color: #ef4444; font-size: 18px;">Account & Data Deletion Request</h3>
-        <p>
-          Initiating this request will permanently remove your Firebase Authentication profile, along with all synced text notes and recorded audio fragments.
-        </p>
-        
-        <a href="mailto:incion.support@://gmail.com" class="btn-delete">
-          Request Account Deletion via Email
-        </a>
-
-        <p class="small-note">
-          Important: Please ensure you send the request from the email address registered inside the Incion App. Data purges are permanent, irreversible, and typically completed within 7 business days.
-        </p>
-      </div>
-
-      <h2>9. Children’s Privacy</h2>
-      <p>
-        This app is not intended for children under 13.
-      </p>
-
-      <h2>10. Changes to This Policy</h2>
-      <p>
-        We may update this policy periodically. Please review this page regularly.
-      </p>
-
-      <h2>11. Contact</h2>
-      <p>
-        Email: <a href="mailto:incion.support@gmail.com">incion.support@gmail.com</a>
-      </p>
-      
-
-      <div class="footer">
-        © 2026 Incion • All rights reserved
-      </div>
-
-    </div>
+<header class="site">
+  <div class="bar">
+    <a class="logo" href="privacy.html"><img src="logo.png" alt="" width="28" height="28">Incion</a>
+    <nav aria-label="Legal pages">
+      <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="#delete-account">Delete account</a>
+    </nav>
   </div>
+</header>
 
+<div class="layout">
+  <aside class="side">
+    <nav aria-labelledby="toc-title">
+      <h2 id="toc-title">On this page</h2>
+      <ol>
+        <li><a href="#about">About this policy</a></li>
+        <li><a href="#collect">Information we collect</a></li>
+        <li><a href="#use">How we use information</a></li>
+        <li><a href="#third-parties">Third-party services</a></li>
+        <li><a href="#ads">Advertising and choices</a></li>
+        <li><a href="#permissions">App permissions</a></li>
+        <li><a href="#sharing">Sharing and disclosure</a></li>
+        <li><a href="#retention">Data retention</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#delete-account">Account and data deletion</a></li>
+        <li><a href="#transfers">International transfers</a></li>
+        <li><a href="#children">Children's privacy</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <h1>Privacy Policy</h1>
+    <ul class="chips">
+      <li>Effective: October 2026</li>
+      <li>App: Incion for Android</li>
+      <li>Contact: support.minzio@gmail.com</li>
+    </ul>
+
+    <div class="callout" role="note">
+      <h2>Summary</h2>
+      <ul>
+        <li>Incion lets you create text and audio notes and sync them to your account.</li>
+        <li>We collect your email address, the notes and recordings you create, and basic device and usage data.</li>
+        <li>We show ads through Google AdMob. We <strong>do not sell</strong> your personal data.</li>
+        <li>You can delete notes at any time, or <a href="#delete-account">delete your whole account and data</a> without needing the app installed.</li>
+      </ul>
+    </div>
+
+    <section id="about">
+      <h2>1. About this policy</h2>
+      <p>This Privacy Policy explains how <strong>Incion</strong> ("Incion", "we", "us") handles information when you use the Incion mobile application (the "App"). By using the App you agree to the practices described here. If you do not agree, please do not use the App.</p>
+      <p>Please also read our <a href="terms.html">Terms &amp; Conditions</a>.</p>
+    </section>
+
+    <section id="collect">
+      <h2>2. Information we collect</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>What we collect</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Account data</td><td>Email address and a unique user ID, via Firebase Authentication. Passwords are handled by Firebase and are never visible to us.</td><td>Sign-in, account security, support</td></tr>
+            <tr><td>Your content</td><td>Text notes and audio recordings you create in the App.</td><td>Provide note-taking and sync across your devices</td></tr>
+            <tr><td>Device and usage data</td><td>Device model, OS version, app version, general usage activity, IP address.</td><td>Keep the App working, fix issues, improve performance</td></tr>
+            <tr><td>Advertising data</td><td>Advertising ID and ad interaction data, collected by Google AdMob.</td><td>Serve and measure ads</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We do not access, read or listen to your notes and recordings except where you ask us for support or where required by law. We do not collect precise location, contacts, or payment card details through the App.</p>
+    </section>
+
+    <section id="use">
+      <h2>3. How we use information</h2>
+      <ul>
+        <li>To create and manage your account and let you sign in.</li>
+        <li>To store your notes and recordings and sync them to your account.</li>
+        <li>To maintain security, prevent abuse and diagnose technical problems.</li>
+        <li>To understand how the App is used and improve it.</li>
+        <li>To display advertising that helps keep the App available.</li>
+        <li>To respond to your requests and comply with legal obligations.</li>
+      </ul>
+    </section>
+
+    <section id="third-parties">
+      <h2>4. Third-party services</h2>
+      <p>The App relies on the following service providers, which process data under their own privacy terms:</p>
+      <ul>
+        <li><strong>Google Firebase</strong> (Authentication, database and file storage): <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy information</a></li>
+        <li><strong>Google AdMob</strong> (advertising): <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      </ul>
+      <!-- If you add Firebase Analytics, Crashlytics, or any other SDK, list it here and update your Play Data safety form. -->
+    </section>
+
+    <section id="ads">
+      <h2>5. Advertising and your choices</h2>
+      <p>The App shows ads served by Google AdMob. AdMob may use your device's advertising ID and similar technologies to show personalized or non-personalized ads and to measure ad performance.</p>
+      <ul>
+        <li>On Android, you can reset your advertising ID or opt out of ads personalization under <strong>Settings → Privacy → Ads</strong> (the path may vary by device).</li>
+        <li>Where required by law (for example in the EEA and UK), you will be asked for consent before personalized ads are shown.</li>
+        <li>Learn how Google uses data from apps that use its services: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>.</li>
+      </ul>
+    </section>
+
+    <section id="permissions">
+      <h2>6. App permissions</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Permission</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td>Microphone</td><td>Recording audio notes. Recording starts only when you start it.</td></tr>
+            <tr><td>Storage</td><td>Saving and accessing notes and recordings on your device.</td></tr>
+            <tr><td>Internet / network state</td><td>Sign-in, syncing notes, and loading ads.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>You can change permissions at any time in your device settings. Some features may stop working if you withdraw them.</p>
+    </section>
+
+    <section id="sharing">
+      <h2>7. Sharing and disclosure</h2>
+      <p>We <strong>do not sell</strong> your personal data. We share information only:</p>
+      <ul>
+        <li>with service providers that operate the App for us (Firebase and AdMob, see section 4);</li>
+        <li>when required by law, legal process or a valid government request;</li>
+        <li>to protect the rights, safety and security of users, the App or the public;</li>
+        <li>as part of a merger, acquisition or sale of assets, in which case we will notify you of any change in how your data is handled.</li>
+      </ul>
+    </section>
+
+    <section id="retention">
+      <h2>8. Data retention</h2>
+      <p>We keep your account data and content for as long as your account is active. When you delete your account, we delete or irreversibly remove your data as described in <a href="#delete-account">section 11</a>. We may keep limited information longer only where the law requires it, or to resolve disputes and prevent fraud.</p>
+    </section>
+
+    <section id="security">
+      <h2>9. Security</h2>
+      <p>Data is sent between the App and our servers over encrypted connections (HTTPS/TLS), and Google Cloud encrypts data stored in Firebase. Access to backend data is restricted. No method of transmission or storage is completely secure, so we cannot guarantee absolute security. Choose a strong, unique password and keep your device protected.</p>
+    </section>
+
+    <section id="rights">
+      <h2>10. Your rights</h2>
+      <p>Depending on where you live (for example under the GDPR in the EEA/UK, the CCPA/CPRA in California, or India's Digital Personal Data Protection Act, 2023), you may have the right to:</p>
+      <ul>
+        <li>access the personal data we hold about you;</li>
+        <li>correct inaccurate data;</li>
+        <li>delete your data (see <a href="#delete-account">section 11</a>);</li>
+        <li>withdraw consent, for example to personalized ads or microphone access;</li>
+        <li>object to or restrict certain processing, and request a copy of your data;</li>
+        <li>lodge a complaint with your local data protection authority.</li>
+      </ul>
+      <p>To exercise any of these rights, email us at <a href="mailto:support.minzio@gmail.com">support.minzio@gmail.com</a>. We may need to verify your identity first, and we aim to respond within 30 days.</p>
+    </section>
+
+    <section id="delete-account">
+      <div class="deletion" id="data-deletion-request">
+        <h2>11. Account and data deletion</h2>
+        <p>You can delete individual notes inside the App at any time. To delete your <strong>entire Incion account and all associated data</strong>, use either method below. You do <strong>not</strong> need the App installed.</p>
+
+        <h3>Option A: Delete from inside the App</h3>
+        <p>Open the App, go to your account settings and choose <strong>Delete account</strong>. Your account is removed immediately.</p>
+
+        <h3>Option B: Request deletion by email</h3>
+        <ol class="steps">
+          <li>Send an email to <a href="mailto:support.minzio@gmail.com">support.minzio@gmail.com</a> with the subject <code>Account Deletion Request – Incion</code>. Send it from the <strong>email address registered to your Incion account</strong>.</li>
+          <li>We may reply to confirm your identity. We will never ask for your password.</li>
+          <li>We delete your account and data within <strong>7 business days</strong> of verification and send you a confirmation email.</li>
+        </ol>
+        <a class="btn" href="mailto:support.minzio@gmail.com?subject=Account%20Deletion%20Request%20-%20Incion&amp;body=Please%20delete%20my%20Incion%20account%20and%20all%20associated%20data.%0A%0ARegistered%20email%3A%20(the%20address%20you%20are%20sending%20from)%0A">Request account deletion by email</a>
+        <p class="small">Deletion is permanent and cannot be undone. Export or copy any notes you want to keep before you request it.</p>
+
+        <h3>What gets deleted</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Data</th><th>Outcome</th></tr></thead>
+            <tbody>
+              <tr><td>Email address and login (Firebase Authentication)</td><td>Deleted</td></tr>
+              <tr><td>Text notes</td><td>Deleted</td></tr>
+              <tr><td>Audio recordings</td><td>Deleted</td></tr>
+              <tr><td>Account settings and user ID</td><td>Deleted</td></tr>
+              <tr><td>Residual copies in system backups</td><td>Overwritten in the normal backup cycle</td></tr>
+              <tr><td>Records we must keep by law, or for fraud and abuse prevention</td><td>Kept only as long as required</td></tr>
+              <tr><td>Advertising data held by Google AdMob</td><td>Managed by Google. Reset your advertising ID in device settings.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small">Notes stored only on your own device are removed when you uninstall the App or clear its data.</p>
+
+        <h3>Already deleted your account?</h3>
+        <p>If you deleted your account from inside the App, your data has already been removed and no further action is needed. If you are unsure, email us and we will confirm the status of your account.</p>
+      </div>
+    </section>
+
+    <section id="transfers">
+      <h2>12. International transfers</h2>
+      <p>Our service providers operate globally, so your information may be processed in countries other than your own, including countries whose data protection laws differ from yours. Where required, such transfers rely on safeguards provided by Google, such as standard contractual clauses.</p>
+    </section>
+
+    <section id="children">
+      <h2>13. Children's privacy</h2>
+      <p>Incion is not directed to children under 13, or under the higher minimum age required in your country. We do not knowingly collect personal data from children. If you believe a child has provided us data, email us and we will delete it promptly.</p>
+    </section>
+
+    <section id="changes">
+      <h2>14. Changes to this policy</h2>
+      <p>We may update this policy from time to time. The effective date at the top shows when it last changed. For significant changes we will give notice in the App or by email. Continued use after an update means you accept the revised policy.</p>
+    </section>
+
+    <section id="contact">
+      <h2>15. Contact us</h2>
+      <p>Questions, requests or complaints about privacy:</p>
+      <p><strong>Incion Support</strong><br>Email: <a href="mailto:support.minzio@gmail.com">support.minzio@gmail.com</a></p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="in">
+    <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="#delete-account">Delete your account</a><a href="mailto:support.minzio@gmail.com">Contact</a></div>
+    <div>&copy; 2026 Incion. All rights reserved.</div>
+  </div>
+</footer>
 </body>
 </html>
