@@ -89,6 +89,38 @@
       text-decoration: underline;
     }
 
+    /* Custom Deletion Callout Box */
+    .deletion-box {
+      border: 1px solid #334155;
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-delete {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ef4444;
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 15px 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-delete:hover {
+      background-color: #dc2626;
+      text-decoration: none;
+    }
+
+    .small-note {
+      color: #94a3b8;
+      font-size: 13px;
+      font-style: italic;
+    }
+
   </style>
 </head>
 <body>
@@ -169,11 +201,26 @@
         We use industry-standard measures to protect your data, but no system is 100% secure.
       </p>
 
-      <h2>8. User Control</h2>
-      <ul>
-        <li>Users can manage and delete notes anytime</li>
-        <li>Contact us for account-related deletion</li>
-      </ul>
+      <h2>8. User Control & Data Deletion</h2>
+      <p>
+        Users can manage and delete notes inside the app at any time. If you wish to delete your entire account and purge all associated storage records permanently, you can also submit a request directly through the web interface below. You do not need to have the app currently installed to use this link.
+      </p>
+
+      <!-- Account Deletion Requirement Node for Google Play Console Verification -->
+      <div id="data-deletion-request" class="deletion-box">
+        <h3 style="margin-top: 0; color: #ef4444; font-size: 18px;">Account & Data Deletion Request</h3>
+        <p>
+          Initiating this request will permanently remove your Firebase Authentication profile, along with all synced text notes and recorded audio fragments.
+        </p>
+        
+        <a href="mailto:incion.support@://gmail.com" class="btn-delete">
+          Request Account Deletion via Email
+        </a>
+
+        <p class="small-note">
+          Important: Please ensure you send the request from the email address registered inside the Incion App. Data purges are permanent, irreversible, and typically completed within 7 business days.
+        </p>
+      </div>
 
       <h2>9. Children’s Privacy</h2>
       <p>
@@ -187,7 +234,7 @@
 
       <h2>11. Contact</h2>
       <p>
-        Email: <a href="mailto:incion.support@gmail.com">your-email@example.com</a>
+        Email: <a href="mailto:incion.support@gmail.com">incion.support@gmail.com</a>
       </p>
       
 
