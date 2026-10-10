@@ -1,193 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Terms & Conditions - Incion</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms &amp; Conditions – Incion</title>
+  <meta name="description" content="The terms that govern your use of the Incion app.">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="logo.png">
 
   <style>
+    :root {
+      --bg: #ffffff; --bg-subtle: #f6f8fa; --ink: #1f2328; --muted: #59636e; --line: #d1d9e0;
+      --accent: #0969da; --note-bg: #ddf4ff; --note-line: #54aeff; --header-bg: rgba(255,255,255,.92);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117; --bg-subtle: #151b23; --ink: #e6edf3; --muted: #9198a1; --line: #30363d;
+        --accent: #4493f8; --note-bg: #10243a; --note-line: #388bfd; --header-bg: rgba(13,17,23,.92);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.7;
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
     }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 20; }
+    .skip:focus { left: 8px; }
+
+    /* Header */
+    .site { position: sticky; top: 0; z-index: 10; background: var(--header-bg); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .bar { max-width: 1080px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+    .logo:hover { text-decoration: none; }
+    .logo img { width: 28px; height: 28px; border-radius: 6px; object-fit: cover; display: block; background: var(--bg-subtle); }
+    .bar nav a { margin-left: 20px; font-size: .92rem; color: var(--muted); }
+    .bar nav a:hover { color: var(--ink); text-decoration: none; }
+    .bar nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+    /* Layout */
+    .layout { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 56px; }
+    aside.side { position: sticky; top: 56px; align-self: start; max-height: calc(100vh - 56px); overflow-y: auto; padding: 36px 0; }
+    .side h2 { font-size: .8rem; font-weight: 600; color: var(--muted); margin: 0 0 10px; }
+    .side ol { list-style: none; counter-reset: n; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+    .side li { counter-increment: n; margin: 0; }
+    .side a { display: block; padding: 4px 0 4px 14px; margin-left: -1px; border-left: 1px solid transparent; font-size: .88rem; color: var(--muted); line-height: 1.45; }
+    .side a::before { content: counter(n) ". "; }
+    .side a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--accent); }
+    main { min-width: 0; padding: 44px 0 72px; max-width: 760px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      aside.side { position: static; max-height: none; padding: 24px 0 0; }
+      .side ol { columns: 2; }
     }
+    @media (max-width: 520px) { .side ol { columns: 1; } .bar nav a { margin-left: 14px; } }
 
-    .card {
-      background: #111827;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    /* Content */
+    h1 { font-size: 2rem; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.02em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+    .chips li { font-size: .82rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
+    section { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+    section:first-of-type { margin-top: 28px; }
+    h2 { font-size: 1.4rem; line-height: 1.3; margin: 0 0 12px; letter-spacing: -0.01em; }
+    p { margin: 0 0 14px; }
+    ul { padding-left: 22px; margin: 0 0 14px; }
+    li { margin: 5px 0; }
+    .caps { font-size: .94rem; }
+
+    .callout { border: 1px solid var(--line); border-left: 4px solid var(--note-line); background: var(--note-bg); border-radius: 6px; padding: 14px 18px; margin: 20px 0; }
+    .callout h2 { font-size: 1rem; margin: 0 0 6px; }
+    .callout ul { margin-bottom: 0; }
+
+    footer { border-top: 1px solid var(--line); }
+    footer .in { max-width: 1080px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; color: var(--muted); font-size: .86rem; }
+    footer a { color: var(--muted); margin-right: 18px; }
+    footer a:hover { color: var(--ink); }
+
+    @media print {
+      .site, .side, .skip { display: none; }
+      .layout { display: block; } body { background: #fff; color: #000; }
     }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #94a3b8;
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      margin-top: 30px;
-      color: #38bdf8;
-      font-size: 20px;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 6px 0;
-    }
-
-    .highlight {
-      color: #22c55e;
-      font-weight: 500;
-    }
-
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #64748b;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #1e293b;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-top: 10px;
-      color: #38bdf8;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .nav {
-      margin-bottom: 20px;
-    }
-
-    .nav a {
-      margin-right: 15px;
-      font-size: 14px;
-    }
-
   </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <div class="container">
-    <div class="card">
-
-      <div class="nav">
-        <a href="index.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
-      </div>
-
-      <h1>Terms & Conditions – Incion</h1>
-      <div class="subtitle">Last updated: April 2026</div>
-      <div class="badge">User Agreement • Secure Usage • Legal Terms</div>
-
-      <p>
-        These Terms & Conditions apply to the <span class="highlight">Incion</span> mobile application (“the App”).
-        By using the App, you agree to be bound by these terms.
-      </p>
-
-      <h2>1. Use of the App</h2>
-      <p>
-        Incion allows users to create and manage text and audio notes for personal use.
-        You agree to use the App only for lawful purposes.
-      </p>
-
-      <h2>2. User Content</h2>
-      <ul>
-        <li>You are responsible for the content you create</li>
-        <li>Do not store unlawful or copyrighted material without permission</li>
-        <li>We do not monitor user-generated content</li>
-      </ul>
-
-      <h2>3. Accounts</h2>
-      <ul>
-        <li>You may log in using Firebase Authentication</li>
-        <li>You are responsible for maintaining account security</li>
-        <li>Provide accurate information</li>
-      </ul>
-
-      <h2>4. Third-Party Services</h2>
-      <ul>
-        <li>Google Firebase (authentication & storage)</li>
-        <li>Google AdMob (advertising)</li>
-      </ul>
-
-      <h2>5. Advertisements</h2>
-      <p>
-        The App may display ads via AdMob. We are not responsible for third-party ad content.
-      </p>
-
-      <h2>6. Data and Privacy</h2>
-      <p>
-        Your use of the App is also governed by our 
-        <a href="index.html">Privacy Policy</a>.
-      </p>
-
-      <h2>7. Limitation of Liability</h2>
-      <ul>
-        <li>No guarantee of uninterrupted service</li>
-        <li>Not responsible for data loss or damages</li>
-      </ul>
-
-      <h2>8. Changes to the App</h2>
-      <p>
-        We may update or modify the App at any time without notice.
-      </p>
-
-      <h2>9. Termination</h2>
-      <p>
-        We may suspend or terminate access if terms are violated.
-      </p>
-
-      <h2>10. Changes to These Terms</h2>
-      <p>
-        These terms may be updated periodically. Please review regularly.
-      </p>
-
-      <h2>11. Contact</h2>
-      <p>
-        Email: <a href="mailto:your-email@example.com">your-email@example.com</a>
-      </p>
-
-      <div class="footer">
-        © 2026 Incion • All rights reserved
-      </div>
-
-    </div>
+<header class="site">
+  <div class="bar">
+    <a class="logo" href="privacy.html"><img src="logo.png" alt="" width="28" height="28">Incion</a>
+    <nav aria-label="Legal pages">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html" aria-current="page">Terms</a>
+      <a href="privacy.html#delete-account">Delete account</a>
+    </nav>
   </div>
+</header>
 
+<div class="layout">
+  <aside class="side">
+    <nav aria-labelledby="toc-title">
+      <h2 id="toc-title">On this page</h2>
+      <ol>
+        <li><a href="#acceptance">Acceptance of terms</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#use">Use of the app</a></li>
+        <li><a href="#accounts">Accounts</a></li>
+        <li><a href="#content">Your content</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#recording">Audio recording</a></li>
+        <li><a href="#third-parties">Third-party services</a></li>
+        <li><a href="#ads">Advertisements</a></li>
+        <li><a href="#privacy">Privacy and data deletion</a></li>
+        <li><a href="#ip">Intellectual property</a></li>
+        <li><a href="#changes-app">Changes to the app</a></li>
+        <li><a href="#termination">Suspension and termination</a></li>
+        <li><a href="#disclaimer">Disclaimer of warranties</a></li>
+        <li><a href="#liability">Limitation of liability</a></li>
+        <li><a href="#indemnity">Indemnification</a></li>
+        <li><a href="#law">Governing law</a></li>
+        <li><a href="#changes-terms">Changes to these terms</a></li>
+        <li><a href="#general">General</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <h1>Terms &amp; Conditions</h1>
+    <ul class="chips">
+      <li>Effective: October 2026</li>
+      <li>App: Incion for Android</li>
+      <li>Contact: support.minzio@gmail.com</li>
+    </ul>
+
+    <div class="callout" role="note">
+      <h2>Summary</h2>
+      <ul>
+        <li>Incion is a personal app for text and audio notes. Use it lawfully and respect other people's privacy.</li>
+        <li>You own your content. You give us only the permission needed to store and sync it for you.</li>
+        <li>The app is provided "as is". Keep your own backups of anything important.</li>
+        <li>You can <a href="privacy.html#delete-account">delete your account and data</a> at any time.</li>
+      </ul>
+    </div>
+
+    <section id="acceptance">
+      <h2>1. Acceptance of terms</h2>
+      <p>These Terms &amp; Conditions ("Terms") govern your use of the <strong>Incion</strong> mobile application (the "App"), provided by Incion ("we", "us"). By downloading, installing, creating an account or using the App, you agree to these Terms and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, do not use the App.</p>
+    </section>
+
+    <section id="eligibility">
+      <h2>2. Eligibility</h2>
+      <p>You must be at least 13 years old, or the minimum age required in your country to use online services without parental consent. If you are under the age of legal majority where you live, you may use the App only with the permission of a parent or guardian.</p>
+    </section>
+
+    <section id="use">
+      <h2>3. Use of the app</h2>
+      <p>Incion lets you create, store and sync text and audio notes for your personal use. We grant you a limited, non-exclusive, non-transferable, revocable licence to install and use the App on your devices in line with these Terms. You agree to use the App only for lawful purposes.</p>
+    </section>
+
+    <section id="accounts">
+      <h2>4. Accounts</h2>
+      <ul>
+        <li>You sign in using Firebase Authentication with your email address.</li>
+        <li>Provide accurate information and keep it up to date.</li>
+        <li>You are responsible for your password and for all activity under your account. Tell us promptly if you suspect unauthorized access.</li>
+        <li>One account is for one person. Do not share or sell your account.</li>
+      </ul>
+    </section>
+
+    <section id="content">
+      <h2>5. Your content</h2>
+      <ul>
+        <li><strong>You own your content.</strong> Your notes and recordings remain yours.</li>
+        <li>You give us a limited permission to host, store, back up and sync your content solely to run the App for you. We do not use it for any other purpose.</li>
+        <li>You are responsible for your content and for having the right to store it. Do not store unlawful material, or copyrighted material you have no permission to keep.</li>
+        <li>We do not routinely monitor user content, but we may access or remove it where necessary to comply with law, respond to a valid legal request, enforce these Terms, or protect users and the service.</li>
+        <li>Do not use the App to store highly sensitive information (such as bank passwords or card numbers). Keep your own backup of anything important.</li>
+      </ul>
+    </section>
+
+    <section id="acceptable-use">
+      <h2>6. Acceptable use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>break any law or infringe anyone's rights, including privacy and intellectual property rights;</li>
+        <li>upload malware, or interfere with or disrupt the App, our servers or networks;</li>
+        <li>try to access other users' accounts or data, or probe or bypass security measures;</li>
+        <li>reverse engineer, decompile, copy or resell the App, except where the law allows;</li>
+        <li>use bots, scrapers or automated means to access the App, or abuse the service or its ads (including clicking ads artificially).</li>
+      </ul>
+    </section>
+
+    <section id="recording">
+      <h2>7. Audio recording</h2>
+      <p>The App can record audio when you start a recording. Laws on recording conversations differ by country and region. <strong>You are responsible for getting any consent required from the people you record</strong>, and for using recordings lawfully.</p>
+    </section>
+
+    <section id="third-parties">
+      <h2>8. Third-party services</h2>
+      <p>The App uses third-party services, including Google Firebase (authentication and storage) and Google AdMob (advertising). Your use of those services is also subject to their own terms and policies, and we are not responsible for how they operate.</p>
+    </section>
+
+    <section id="ads">
+      <h2>9. Advertisements</h2>
+      <p>The App may display ads served by Google AdMob. We do not control the content of third-party ads and are not responsible for them or for products and services you obtain through them. Any dealings with advertisers are between you and the advertiser.</p>
+    </section>
+
+    <section id="privacy">
+      <h2>10. Privacy and data deletion</h2>
+      <p>Our <a href="privacy.html">Privacy Policy</a> explains what data we collect and how we use it. You can delete your account and data at any time by following the steps in <a href="privacy.html#delete-account">Account and data deletion</a>.</p>
+    </section>
+
+    <section id="ip">
+      <h2>11. Intellectual property</h2>
+      <p>The App, including its name, logo, design and software, belongs to Incion or its licensors and is protected by law. These Terms give you no ownership of it. Our name and branding may not be used without our written permission.</p>
+    </section>
+
+    <section id="changes-app">
+      <h2>12. Changes to the app</h2>
+      <p>We may update, change, suspend or discontinue the App or any feature at any time. Where a change significantly affects you, such as discontinuing the service, we will try to give reasonable notice in the App or by email so you can save your content.</p>
+    </section>
+
+    <section id="termination">
+      <h2>13. Suspension and termination</h2>
+      <p>You may stop using the App and delete your account at any time. We may suspend or end your access, with or without notice, if you breach these Terms, misuse the service, or where required by law. When your account ends, your data is handled as described in the Privacy Policy.</p>
+    </section>
+
+    <section id="disclaimer">
+      <h2>14. Disclaimer of warranties</h2>
+      <p class="caps">The App is provided "as is" and "as available", without warranties of any kind, express or implied, including fitness for a particular purpose, accuracy and non-infringement. We do not guarantee that the App will be uninterrupted, error-free or secure, or that your content will never be lost or corrupted.</p>
+    </section>
+
+    <section id="liability">
+      <h2>15. Limitation of liability</h2>
+      <p class="caps">To the maximum extent permitted by law, Incion is not liable for any indirect, incidental, special, consequential or punitive damages, or for loss of data, profits or goodwill, arising from your use of or inability to use the App. Where liability cannot be excluded, our total liability to you is limited to the amount you paid us for the App in the 12 months before the claim, which for a free app is zero. Nothing in these Terms limits liability that cannot be limited by law.</p>
+    </section>
+
+    <section id="indemnity">
+      <h2>16. Indemnification</h2>
+      <p>You agree to indemnify Incion against claims, losses and expenses (including reasonable legal fees) arising from your content or your breach of these Terms or of any law, to the extent permitted by law.</p>
+    </section>
+
+    <section id="law">
+      <h2>17. Governing law</h2>
+      <p>These Terms are governed by the laws of India, without regard to conflict-of-law rules. Courts in India have jurisdiction over disputes, except where your local consumer protection law gives you the right to bring a claim in your home jurisdiction. Before taking formal action, please contact us so we can try to resolve the issue informally.</p>
+    </section>
+
+    <section id="changes-terms">
+      <h2>18. Changes to these terms</h2>
+      <p>We may update these Terms from time to time. The effective date at the top shows when they last changed. For material changes we will give notice in the App or by email. Continuing to use the App after the update means you accept the new Terms.</p>
+    </section>
+
+    <section id="general">
+      <h2>19. General</h2>
+      <ul>
+        <li><strong>Entire agreement:</strong> these Terms and the Privacy Policy are the full agreement between you and us about the App.</li>
+        <li><strong>Severability:</strong> if any part is found unenforceable, the rest stays in effect.</li>
+        <li><strong>No waiver:</strong> not enforcing a provision is not a waiver of it.</li>
+        <li><strong>Assignment:</strong> you may not transfer your rights under these Terms. We may transfer ours, for example in a merger or sale.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>20. Contact us</h2>
+      <p>Questions about these Terms:</p>
+      <p><strong>Incion Support</strong><br>Email: <a href="mailto:support.minzio@gmail.com">support.minzio@gmail.com</a></p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="in">
+    <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html#delete-account">Delete your account</a><a href="mailto:support.minzio@gmail.com">Contact</a></div>
+    <div>&copy; 2026 Incion. All rights reserved.</div>
+  </div>
+</footer>
 </body>
 </html>
